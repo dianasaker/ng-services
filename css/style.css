@@ -1,0 +1,9 @@
+.box{
+	float:left;
+	margin:10px;
+	width:100px;
+	height:200px;
+}
+.center-text{
+	text-align: center;
+}

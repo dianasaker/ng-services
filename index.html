@@ -1,0 +1,34 @@
+<html ng-app="app">
+	<head>
+		<title>The Movie DB app</title>
+		<link href="css/style.css" rel="stylesheet" />
+		<script src="js/angular.min.js"></script>
+		<!--app config-->
+		<script src="config.js"></script>
+		<!--controllers-->
+		<script src="controllers/searchCtrl.js"></script>
+	</head>
+	<body>
+		<h1>The Movie DB app</h1>
+		<div ng-controller="searchCtrl">
+			<input ng-model="searchActors" placeholder="Actor name.." ng-change="getActors()"/>
+			<input ng-model="searchMovie" placeholder="movie name.." ng-change="getMovie()" />
+			<button ng-click="getActors()">start search</button>
+			<hr />
+			<div ng-show="!moviesLoaded">
+		  	  <div ng-repeat="actor in actors" class="box" ng-click="getMoviesById(actor.id)">
+			   <div class="center-text">{{actor.name}}</div>
+			   <img ng-src="{{SITE_PATH}}/{{actor.profile_path}}" width="100px" height="100px" />
+			   <hr />
+			  </div>
+			</div>
+			<div ng-show="moviesLoaded">
+			  <div ng-repeat="c in casts" class="box">
+				<div class="center-text">{{c.original_title}}</div>
+				<img width="100px" ng-src="{{SITE_PATH}}/{{c.poster_path}}"/>
+			  </div>
+			</div>
+			
+		</div>
+	</body>
+</html>
